@@ -1,0 +1,168 @@
+{
+  "main": {
+    "id": "c485c129691c0188",
+    "type": "split",
+    "children": [
+      {
+        "id": "60fa67d415d2de60",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7fdf25ba0259a1f7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "环论初步.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "46f2416712d61496",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "抽代复习要点.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2279a07f1b54db4c",
+    "type": "split",
+    "children": [
+      {
+        "id": "73101e3fb025af1d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ad1974666e719414",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "9704c36a230bda29",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "fd3595f0c93caf1a",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "46d3b4a59aee80a5",
+    "type": "split",
+    "children": [
+      {
+        "id": "56771302c5374a01",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ccb3cc7ff550b853",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "抽代复习要点.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "36a4f29203a6b2a2",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "抽代复习要点.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "76d09055a4142d6c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "6b3ee75b24be241b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "抽代复习要点.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "46f2416712d61496",
+  "lastOpenFiles": [
+    "环论初步.md",
+    "抽代复习要点.pdf",
+    "抽代复习要点.md"
+  ]
+}
