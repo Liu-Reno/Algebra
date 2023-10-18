@@ -1,0 +1,33 @@
+\begin{thebibliography}{1}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+
+\bibitem{spanier1989algebraic}
+E.~H. Spanier, E.~H. Spanier, Algebraic topology, Springer Science \& Business
+  Media, 1989.
+
+\bibitem{周建伟2007代数拓扑讲义}
+周建伟, 代数拓扑讲义, Ke xue chu ban she, 2007.
+
+\bibitem{姜伯驹2006同调论}
+姜伯驹, 同调论, 北京大学出版社, 2006.
+
+\bibitem{armstrong2013basic}
+M.~A. Armstrong, Basic topology, Springer Science \& Business Media, 2013.
+
+\bibitem{greenberg2018algebraic}
+M.~J. Greenberg, Algebraic topology: a first course, CRC Press, 2018.
+
+\bibitem{hatcher2005algebraic}
+A.~Hatcher, Algebraic topology, 清华大学出版社有限公司, 2005.
+
+\bibitem{rotman2013introduction}
+J.~J. Rotman, An introduction to algebraic topology, Vol. 119, Springer Science
+  \& Business Media, 2013.
+
+\bibitem{eilenberg1953acyclic}
+S.~Eilenberg, S.~MacLane, Acyclic models, American journal of mathematics
+  75~(1) (1953) 189--199.
+
+\end{thebibliography}

@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: 代数拓扑引论.aux
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+The style file: elsart-num.bst
+Reallocating 'name_of_file' (item size: 1) to 10 items.
+Database file #1: Reference.bib
+You've used 8 entries,
+            2332 wiz_defined-function locations,
+            611 strings with 4853 characters,
+and the built_in function-call counts, 1218 in all, are:
+= -- 59
+> -- 38
+< -- 1
++ -- 18
+- -- 10
+* -- 66
+:= -- 157
+add.period$ -- 8
+call.type$ -- 8
+change.case$ -- 1
+chr.to.int$ -- 0
+cite$ -- 8
+duplicate$ -- 58
+empty$ -- 206
+format.name$ -- 12
+if$ -- 299
+int.to.chr$ -- 0
+int.to.str$ -- 8
+missing$ -- 15
+newline$ -- 30
+num.names$ -- 8
+pop$ -- 58
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 39
+stack$ -- 0
+substring$ -- 25
+swap$ -- 2
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 10
+width$ -- 9
+write$ -- 63
