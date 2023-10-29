@@ -45,3 +45,5 @@
 \contentsline {subsubsection}{\numberline {3.5.1}Problems}{67}{subsubsection.3.5.1}%
 \contentsline {subsubsection}{\numberline {3.5.2}Theorem}{67}{subsubsection.3.5.2}%
 \contentsline {subsection}{\numberline {3.6}Subdivision}{71}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Homology Exact Sequences}{79}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Mayer-Vietoris Sequences}{85}{subsection.3.8}%

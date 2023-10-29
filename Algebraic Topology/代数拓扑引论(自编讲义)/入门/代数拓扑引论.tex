@@ -209,6 +209,9 @@
 本文为一个代数拓扑的笔记,主要参考了\cite{armstrong2013basic},\cite{greenberg2018algebraic},\cite{hatcher2005algebraic},\cite{周建伟2007代数拓扑讲义},\cite{rotman2013introduction}\cite{spanier1989algebraic}\cite{姜伯驹2006同调论}.
 
 
+于此特别鸣谢齐震宇老师.
+
+
 代数拓扑基本来说分为两个部分，一个是同伦伦，一个是同调伦。
 
 
@@ -4855,7 +4858,7 @@ $$
                         H\sigma : \Delta_{k+1} &\to& X\\
                         (t_0,t_1,\cdots,t_{k+1}) &\mapsto& \left\{\begin{array}{c} 0,(t_0,t_1,\cdots,t_{k+1}) = (1,0,\cdots,0)\\ (1-t_0)\sigma\left(\frac{t_1}{\sum_{i=1}^{k+1}t_i},\cdots,\frac{t_{k+1}}{\sum_{i=1}^{k+1}t_i}\right),otherwise\\\end{array}\right.
                     \end{eqnarray*}
-                    容易得到它是连续的.并且$(H\sigma)_0 = \sigma$,$(H\sigma)_i=H(\sigma_i)$(显然的).因此可以得到一个结论\\
+                    容易得到它是连续的.并且$(H\sigma)_0 = \sigma$,$(H\sigma)_i=H(\sigma_{i-1})$(显然的).因此可以得到一个结论\\
                     \begin{eqnarray*}
                         \partial(H\sigma) &=& \sum_{i = 0}^{k+1}(-1)^i (H\sigma)_i \\
                         &=& \sigma + \sum_{i = 1}^{k+1}(-1)^i(H\sigma)_i \\
@@ -5686,7 +5689,7 @@ In the following assumption, let $\mathscr{C}$ be category, $\mathfrak{M} \subse
     $$
     令$f_k = \tilde{f}_k \circ \tau$即可得到一个比 $\mathcal{U}$-expressible 弱的条件,并且可以使定理\ref{the:3.4.1},这个条件就等价于\cite{eilenberg1953acyclic}中的representation.
 \end{remark}
-\subsection{Subdivision}
+\subsection{Subdivision}(开头生肉,后半段熟肉)
 \begin{remark}
     \quad \\
     $\bullet$ Everything we have worked at so far about chain complexes of abelian group can be generalized word by word to chan complex of $R$-modules ($R$: a commutative ring with unity)\\
@@ -5697,17 +5700,1142 @@ In the following assumption, let $\mathscr{C}$ be category, $\mathfrak{M} \subse
     so that $(g \circ f)\simeq \text{id}_{C}$ and $(f \circ g) \simeq \text{id}_{C'}$.\\
     It is clear that if $C\xrightarrow{f} C'$ is a chain equivalence then $H_k(C) \xrightarrow[\simeq]{f_k} H_k(C'),\forall k \in \Z$.
 \end{remark}
-Notations.\\
-Let $Z\subset \R^n$ be a convex subset.\\
-For $P_0,\cdots,P_k\in Z$, we define a singular $k$-simplex 
+标注:\\
+(1) 令$Z$为$\R^n$中的凸集(convex set).对于$P_0,\cdots,P_k\in Z$,可以定义一个奇异单形
 \begin{eqnarray*}
-    [P_0,\cdots,P_k] : \Delta_k &\to& Z\\
+    [P_0,\cdots,P_k]: \Delta_m &\to& Z\\
     (t_0,\cdots,t_k) &\mapsto& t_0P_0+\cdots+t_kP_k
 \end{eqnarray*}
-we call it affine $k$ -simplex in $Z$.\\
+称其为一个k阶线性奇异单形(affine k- simplex)(在前文提到过,此处重新提一遍)\\
+令$A_k(Z)$为$Z$中所有线性奇异单形所生成的自由Abel群.即
 $$
-A_k(Z) := \Z^{\bigoplus \{[P_0,\cdots,P_k]:P_0,\cdots,P_k\in Z\}}
+A_k(Z) = \Z^{\bigoplus \{[P_0,\cdots,P_k]:P_0,\cdots,P_k\in Z\}}
 $$
+不难看出$A_k(Z)\subset S_k(Z)$.\\
+(2) 对于星型集(star-shaped set),在求其同调群时,我们曾经提出过$H_k$操作,即对于$\sigma :\Delta_k \to X$,有
+\begin{eqnarray*}
+    H\sigma : \Delta_{k+1} &\to& X\\
+    H(\sigma) &=& \left\{\begin{array}{c} 0,(t_0,t_1,\cdots,t_k) = (1,0,\cdots,0)\\(1-t_0)\sigma(\frac{t_1}{1-t_0},\cdots,\frac{t_k}{1-t_0}) , \text{其它} \\ \end{array}\right.
+\end{eqnarray*}
+不难发现在$H$操作中,总是以星型集$X$的原点$O$作为顶点.我们可以试着对其进行推广,转化为以任意一个点$b \in Z$为顶点的$H_k$操作,将其记为$H_b$以资区分.\\
+首先,我们需要构造出$H_b : \Delta_2 \to X$.
+观察下图
+\[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+    %uncomment if require: \path (0,345); %set diagram left start at 0, and has height of 345
+    
+    %Straight Lines [id:da013650633659385347] 
+    \draw [color={rgb, 255:red, 139; green, 87; blue, 42 }  ,draw opacity=1 ]   (143.11,283.31) -- (195.11,245.09) ;
+    %Straight Lines [id:da27039977725973285] 
+    \draw [color={rgb, 255:red, 139; green, 87; blue, 42 }  ,draw opacity=1 ]   (437.01,117.8) -- (503.11,96.09) ;
+    \draw [shift={(435.11,118.42)}, rotate = 341.82] [color={rgb, 255:red, 139; green, 87; blue, 42 }  ,draw opacity=1 ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    %Straight Lines [id:da37382472770089126] 
+    \draw    (163,130.39) -- (163,48.94) ;
+    \draw [shift={(163,46.94)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    %Straight Lines [id:da031240596184020752] 
+    \draw    (163,130.39) -- (252.24,130.39) ;
+    \draw [shift={(254.24,130.39)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    %Straight Lines [id:da3343851630778558] 
+    \draw [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ]   (163,88.66) -- (208.62,130.39) ;
+    %Curve Lines [id:da30930758886784715] 
+    \draw [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ]   (267,83.28) .. controls (306.6,53.58) and (325.85,53) .. (365.78,82.38) ;
+    \draw [shift={(367,83.28)}, rotate = 216.61] [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    %Shape: Free Drawing [id:dp7498238856223063] 
+    \draw  [line width=3] [line join = round][line cap = round] (413.11,147.98) .. controls (413.11,147.98) and (413.11,147.98) .. (413.11,147.98) ;
+    %Curve Lines [id:da8868858906502131] 
+    \draw [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ]   (524.11,121.65) .. controls (481.11,87.65) and (510.11,51.65) .. (453.11,25.65) ;
+    \draw [shift={(491.5,63.78)}, rotate = 70.71] [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+    %Straight Lines [id:da2764777067233204] 
+    \draw    (168,303.31) -- (168,178.94) ;
+    \draw [shift={(168,176.94)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    %Straight Lines [id:da6443694835634153] 
+    \draw    (128.11,261.39) -- (257.24,261.39) ;
+    \draw [shift={(259.24,261.39)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    %Straight Lines [id:da22040436899671567] 
+    \draw [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ]   (168,219.66) -- (213.62,261.39) ;
+    %Straight Lines [id:da47360323632764945] 
+    \draw    (201.11,232.65) -- (112.62,309.34) ;
+    \draw [shift={(111.11,310.65)}, rotate = 319.09] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    %Straight Lines [id:da5488506321912419] 
+    \draw    (168,219.66) -- (143.11,283.31) ;
+    %Straight Lines [id:da023425690946547784] 
+    \draw    (143.11,283.31) -- (213.62,261.39) ;
+    %Curve Lines [id:da8177467995153509] 
+    \draw    (334,246.42) .. controls (368.76,268.53) and (421.05,228.57) .. (421.12,178.28) ;
+    \draw [shift={(421.11,176.76)}, rotate = 88.88] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    %Straight Lines [id:da3885587117694935] 
+    \draw    (453.11,25.65) -- (435.11,118.42) ;
+    %Straight Lines [id:da5524016913352956] 
+    \draw    (435.11,118.42) -- (524.11,121.65) ;
+    %Curve Lines [id:da8117237248806111] 
+    \draw    (185,253) .. controls (189.07,278.83) and (190.09,343.77) .. (228.92,315.96) ;
+    \draw [shift={(230.11,315.09)}, rotate = 143.13] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    %Shape: Free Drawing [id:dp15868120371379413] 
+    \draw  [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ][line width=3] [line join = round][line cap = round] (503.24,95.98) .. controls (503.24,95.98) and (503.24,95.98) .. (503.24,95.98) ;
+    %Shape: Free Drawing [id:dp3350977537246558] 
+    \draw  [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ][line width=3] [line join = round][line cap = round] (195.24,244.6) .. controls (195.24,244.6) and (195.24,244.6) .. (195.24,244.6) ;
+    %Shape: Free Drawing [id:dp6238112314122957] 
+    \draw  [color={rgb, 255:red, 139; green, 87; blue, 42 }  ,draw opacity=1 ][line width=3] [line join = round][line cap = round] (487.24,101.6) .. controls (487.24,101.6) and (487.24,101.6) .. (487.24,101.6) ;
+    %Shape: Free Drawing [id:dp42550392755827415] 
+    \draw  [color={rgb, 255:red, 139; green, 87; blue, 42 }  ,draw opacity=1 ][line width=3] [line join = round][line cap = round] (185.24,252.6) .. controls (185.24,252.6) and (185.24,252.6) .. (185.24,252.6) ;
+    %Curve Lines [id:da777852321274461] 
+    \draw    (195.11,245.09) .. controls (236.82,259.64) and (247.48,236.55) .. (249,215.99) ;
+    \draw [shift={(249.11,214.09)}, rotate = 92.73] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    %Curve Lines [id:da046657279245506] 
+    \draw    (487,103) .. controls (493.02,132.64) and (502.81,110.77) .. (504.06,153.11) ;
+    \draw [shift={(504.11,155.09)}, rotate = 268.73] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    %Shape: Free Drawing [id:dp8437658854311436] 
+    \draw  [line width=3] [line join = round][line cap = round] (435.11,117.98) .. controls (435.11,117.98) and (435.11,117.98) .. (435.11,117.98) ;
+    
+    % Text Node
+    \draw (199,78.82) node [anchor=north west][inner sep=0.75pt]    {$\Delta _{1}$};
+    % Text Node
+    \draw (256.24,133.79) node [anchor=north west][inner sep=0.75pt]    {$t_{0}$};
+    % Text Node
+    \draw (149,26.68) node [anchor=north west][inner sep=0.75pt]    {$t_{1}$};
+    % Text Node
+    \draw (137,217.82) node [anchor=north west][inner sep=0.75pt]    {$\Delta _{2}$};
+    % Text Node
+    \draw (152,159.68) node [anchor=north west][inner sep=0.75pt]    {$t_{1}$};
+    % Text Node
+    \draw (104.24,281.79) node [anchor=north west][inner sep=0.75pt]    {$t_{0}$};
+    % Text Node
+    \draw (261,253.05) node [anchor=north west][inner sep=0.75pt]    {$t_{2}$};
+    % Text Node
+    \draw (390,128.4) node [anchor=north west][inner sep=0.75pt]    {$O$};
+    % Text Node
+    \draw (552,3.4) node [anchor=north west][inner sep=0.75pt]    {$\subset \mathbb{R}^{n}$};
+    % Text Node
+    \draw (214,293.4) node [anchor=north west][inner sep=0.75pt]    {$( t_{0} ,t_{1} ,t_{2})$};
+    % Text Node
+    \draw (206,181.4) node [anchor=north west][inner sep=0.75pt]    {$\left( 0,\frac{t_{1}}{t_{1} +t_{2}} ,\frac{t_{2}}{t_{1} +t_{2}}\right)$};
+    % Text Node
+    \draw (310,36.4) node [anchor=north west][inner sep=0.75pt]    {$\sigma $};
+    % Text Node
+    \draw (508,48.4) node [anchor=north west][inner sep=0.75pt]    {$\sigma \left(\frac{t_{1}}{t_{1} +t_{2}} ,\frac{t_{2}}{t_{1} +t_{2}}\right)$};
+    % Text Node
+    \draw (444,164.4) node [anchor=north west][inner sep=0.75pt]    {$( 1-t_{0})\left( \sigma \left(\frac{t_{1}}{t_{1} +t_{2}} ,\frac{t_{2}}{t_{1} +t_{2}}\right) -b\right) +b$};
+    % Text Node
+    \draw (425,102.4) node [anchor=north west][inner sep=0.75pt]    {$b$};
+    % Text Node
+    \draw (174,255.4) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 139; green, 87; blue, 42 }  ,opacity=1 ]  {$P$};
+    % Text Node
+    \draw (465,86.4) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 139; green, 87; blue, 42 }  ,opacity=1 ]  {$H\sigma ( P)$};
+    
+    
+    \end{tikzpicture}\]
+    不难发现若以$b$为顶点,则考虑$\Delta_2$上的点$P$,其坐标为$(t_0,t_1,t_2)$,可知$t_0$处端点与$P$的连线交$t_0$对应面坐标为$\left(0,\frac{t_1}{1-t_0},\frac{t_2}{1-t_0}\right)$而后者在$Z$中的坐标为$\sigma\left(\frac{t_1}{1-t_0},\frac{t_2}{1-t_0}\right)$.而后,不难得到$Z$中向量$\overrightarrow{\sigma\left(\frac{t_1}{1-t_0},\frac{t_2}{1-t_0}\right) b} = \sigma\left(\frac{t_1}{1-t_0},\frac{t_2}{1-t_0}\right)-b$因此得到$H_b\sigma(P) = (1-t_0)\left(\sigma\left(\frac{t_1}{1-t_0},\frac{t_2}{1-t_0}\right)-b\right)+b$.\\
+    而后仿照我们在前文中的做法,将其推广到$k$维情况,即
+    \begin{eqnarray*}
+        H\sigma : \Delta_{k+1} &\to& Z\\
+        H\sigma(t_0,\cdots,t_{k+1}) &:=& \left\{\begin{array}{c} b,(t_0,t_1,\cdots,t_{k+1}) = (1,0,\cdots,0)\\t_0b+(1-t_0)\sigma\left(\frac{t_1}{1-t_0},\cdots,\frac{t_{k+1}}{1-t_0}\right) \text{其它}\\\end{array}\right.
+    \end{eqnarray*}
+举个特例:若$\sigma = [P_1,\cdots,P_{k}]$则$H_{P_0}\sigma = [P_0,\cdots,P_k]$.\\
+根据前文的讨论,我们也可以得到$(H_b\sigma)_0 = \sigma$且$(H_b\sigma)_i = (H_b(\sigma)_{i-1})$.\\yi
+因此$\partial H_b \sigma = \sigma - H_b \partial \sigma \Leftrightarrow \sigma = \partial H_b \sigma + H_b \partial \sigma$.\\
+接下来进入主题:细分(Subdivision)\\
+细分是一种处理奇异单形的方法,其原理是在保证以下图表交换的前提下对于$\sigma$进行重分,将一个大的复形使用若干个小的复形来代替.细分实质上就是一族自然变换$\bold{sd} = \{\text{sd}_k : S_k \to S_k\}$所构成的链映射.除$\text{sd}_0 = \text{id}_{S_0}$外,其它部分均不为恒等映射.
+\[\begin{tikzcd}
+	{} & {S_k} && {S_{k-1}} && \cdots && {S_1} && {S_0} \\
+	\\
+	{} & {S_k} && {S_{k-1}} && \cdots && {S_1} && {S_0}
+	\arrow["{\partial_k}", from=1-2, to=1-4]
+	\arrow[from=1-4, to=1-6]
+	\arrow["{\partial_2}", from=1-6, to=1-8]
+	\arrow["{\partial_1}", from=1-8, to=1-10]
+	\arrow["{\partial_k}", from=3-2, to=3-4]
+	\arrow[from=3-4, to=3-6]
+	\arrow["{\partial_2}", from=3-6, to=3-8]
+	\arrow["{\partial_1}", from=3-8, to=3-10]
+	\arrow["{sd_k}"{description}, from=1-2, to=3-2]
+	\arrow["{sd_{k-1}}"{description}, from=1-4, to=3-4]
+	\arrow["{sd_1}"{description}, from=1-8, to=3-8]
+	\arrow["{\text{id}_{S_0}}"{description}, from=1-10, to=3-10]
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=3-1, to=3-2]
+\end{tikzcd}\]
+\begin{theorem}
+    对于链复形$S$,存在一族链映射$\bold{sd} : S \to S$使上图交换.称$\bold{sd}$为一个\emph{重分链映射}(名词出自\cite{姜伯驹2006同调论}).
+\end{theorem}
+\begin{proof}
+    我们采用类似于Acylic Model Theorem IA 的证明方法来进行证明.\\
+    ($1^\circ$) $\text{sd}_1$的存在性:由于$S_1(X)$中任一奇异单形$\sigma$都可以由$S_1(\Delta_1)$中的$\text{id}_{\Delta_1}$经由映射$\sigma_\#$得到.因此只需要构造出$S_1(\Delta_1)$的$\text{sd}_1(\Delta_1)$即可.\\
+    考虑以下图表
+    \[\begin{tikzcd}
+        {\text{id}_{\Delta_1} := [e_0,e_1]} &&& {[e_1]-[e_0]} \\
+        & {S_1(\Delta_1)} && {S_0(\Delta_1)} && 0 \\
+        \\
+        & {S_1(\Delta_1)} && {S_0(\Delta_1)} && 0 \\
+        {\xi_1} &&& {[e_1]-[e_0]}
+        \arrow["{\text{id}_{S_0(\Delta_1)}}", from=2-4, to=4-4]
+        \arrow["{\partial_1(\Delta_1)}", from=2-2, to=2-4]
+        \arrow["{\partial_1(\Delta_1)}"', from=4-2, to=4-4]
+        \arrow[from=2-4, to=2-6]
+        \arrow[from=4-4, to=4-6]
+        \arrow["{sd_1(\Delta_1)}"{description}, from=2-2, to=4-2]
+        \arrow["\in"{marking}, draw=none, from=1-1, to=2-2]
+        \arrow[maps to, from=1-1, to=1-4]
+        \arrow[maps to, from=1-1, to=5-1]
+        \arrow["\in"{marking}, draw=none, from=5-1, to=4-2]
+        \arrow["\in"{marking}, draw=none, from=1-4, to=2-4]
+        \arrow["\in"{marking}, draw=none, from=5-4, to=4-4]
+        \arrow[maps to, from=5-1, to=5-4]
+    \end{tikzcd}\]
+    我们记$\xi_1 = \text{sd}_1(\Delta_1)\text{id}_{\Delta_1}$.由于$\partial_1(\Delta_1)\xi_1 = [e_1]-[e_0]$.
+    \[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+        %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+        
+        %Straight Lines [id:da19157877812827584] 
+        \draw [color={rgb, 255:red, 189; green, 16; blue, 224 }  ,draw opacity=1 ][fill={rgb, 255:red, 189; green, 16; blue, 224 }  ,fill opacity=1 ]   (422.81,125.53) -- (444.14,145.04) ;
+        \draw [shift={(445.62,146.39)}, rotate = 222.45] [color={rgb, 255:red, 189; green, 16; blue, 224 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        %Straight Lines [id:da03215462546092884] 
+        \draw    (183,150.39) -- (183,68.94) ;
+        \draw [shift={(183,66.94)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        %Straight Lines [id:da08026201971308589] 
+        \draw    (183,150.39) -- (272.24,150.39) ;
+        \draw [shift={(274.24,150.39)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        %Straight Lines [id:da9525827092206756] 
+        \draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ]   (184.48,110.01) -- (228.62,150.39) ;
+        \draw [shift={(183,108.66)}, rotate = 42.45] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+        %Right Arrow [id:dp5397910672320101] 
+        \draw   (300,104.06) -- (318.67,104.06) -- (318.67,99.31) -- (331.11,108.81) -- (318.67,118.31) -- (318.67,113.56) -- (300,113.56) -- cycle ;
+        %Straight Lines [id:da8593945327402053] 
+        \draw    (400,146.39) -- (400,64.94) ;
+        \draw [shift={(400,62.94)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        %Straight Lines [id:da8318714304903536] 
+        \draw    (400,146.39) -- (489.24,146.39) ;
+        \draw [shift={(491.24,146.39)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        %Straight Lines [id:da6261174272476495] 
+        \draw [color={rgb, 255:red, 126; green, 211; blue, 33 }  ,draw opacity=1 ]   (401.48,106.01) -- (422.81,125.53) ;
+        \draw [shift={(400,104.66)}, rotate = 42.45] [color={rgb, 255:red, 126; green, 211; blue, 33 }  ,draw opacity=1 ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+        %Shape: Free Drawing [id:dp027178161054453698] 
+        \draw  [line width=3] [line join = round][line cap = round] (422.11,125.31) .. controls (422.11,125.31) and (422.11,125.31) .. (422.11,125.31) ;
+        
+        % Text Node
+        \draw (219,98.82) node [anchor=north west][inner sep=0.75pt]    {$\Delta _{1}$};
+        % Text Node
+        \draw (230.62,153.79) node [anchor=north west][inner sep=0.75pt]    {$e_{0}$};
+        % Text Node
+        \draw (163,91.4) node [anchor=north west][inner sep=0.75pt]    {$e_{1}$};
+        % Text Node
+        \draw (447.62,149.79) node [anchor=north west][inner sep=0.75pt]    {$e_{0}$};
+        % Text Node
+        \draw (380,87.4) node [anchor=north west][inner sep=0.75pt]    {$e_{1}$};
+        % Text Node
+        \draw (423,105.4) node [anchor=north west][inner sep=0.75pt]    {$b$};
+        % Text Node
+        \draw (200,189.4) node [anchor=north west][inner sep=0.75pt]    {$[ e_{0} ,e_{1}]$};
+        % Text Node
+        \draw (399,188.4) node [anchor=north west][inner sep=0.75pt]    {$[ b,e_{1}] -[ b,e_{0}]$};
+        
+        
+        \end{tikzpicture}\]    
+        因此令$\xi_1 := [b,e_1] - [b,e_0]$可以得到$\partial_1(\Delta_1)\xi_1 = [e_1] -[e_0]$进一步考虑以下图表
+        \[\begin{tikzcd}
+            {\text{id}_{\Delta_1}} & {S_1(\Delta_1)} && {S_0(\Delta_1)} \\
+            && {S_1(X)} && {S_0(X)} \\
+            & {S_1(\Delta_1)} && {S_0(\Delta_1)} \\
+            {\xi_1} && {S_1(X)} && {S_0(X)} \\
+            && {\sigma_\#\xi_1} && {\partial_1(X)\sigma_\#\xi_1}
+            \arrow["{\sigma_\#}"{description}, from=1-2, to=2-3]
+            \arrow["{\sigma_\#}"{description}, from=1-4, to=2-5]
+            \arrow["{sd_1(X)}"{description, pos=0.3}, from=2-3, to=4-3]
+            \arrow["{\partial_1(X)}"{description, pos=0.7}, from=2-3, to=2-5]
+            \arrow["{\text{id}_X}", from=2-5, to=4-5]
+            \arrow["{\partial_1(X)}"{description}, from=4-3, to=4-5]
+            \arrow["{\sigma_\#}"{description}, from=3-2, to=4-3]
+            \arrow["{sd_1(\Delta_1)}"{description}, from=1-2, to=3-2]
+            \arrow[from=1-2, to=1-4]
+            \arrow["{\text{id}_{\Delta_1}}"{description, pos=0.3}, from=1-4, to=3-4]
+            \arrow[from=3-2, to=3-4]
+            \arrow["{\sigma_\#}"{description}, from=3-4, to=4-5]
+            \arrow["\in"{marking}, draw=none, from=1-1, to=1-2]
+            \arrow[maps to, from=1-1, to=4-1]
+            \arrow["\in"{marking}, draw=none, from=4-1, to=3-2]
+            \arrow["\in"{marking}, draw=none, from=5-3, to=4-3]
+            \arrow[maps to, from=4-1, to=5-3]
+            \arrow[maps to, from=5-3, to=5-5]
+            \arrow["\in"{marking}, draw=none, from=5-5, to=4-5]
+        \end{tikzcd}\]
+        不难发现对于任意的$X \in \Obj(\bold{Top})$,可以定义$\text{sd}_1(X)$将$\sigma$映射为$\sigma_\# \xi_1$.而且图表的交换性是显然的.因此不难得出$\text{sd}_1: S_1 \to S_1$是一个自然变换并且使下图交换.
+        \[\begin{tikzcd}
+            {S_1} && {S_0} \\
+            \\
+            {S_1} && {S_0}
+            \arrow["{\partial_1}", from=1-1, to=1-3]
+            \arrow["{\partial_1}"', from=3-1, to=3-3]
+            \arrow["{sd_1}"{description}, from=1-1, to=3-1]
+            \arrow["{\text{id}_{S_0}}"{description}, from=1-3, to=3-3]
+        \end{tikzcd}\]
+        而且若$X \subset \R^n$为凸集,则因为sd$_1$也是一个线性作用,因此得知
+        $$
+        \text{sd}_1(X)(A_1(X)) \subset A_1(X)
+        $$  
+        \noindent($2^\circ$)接下来,假设我们已经定义了自然变换
+        $$
+        \text{sd}_{k-1} : S_{k-1}\to S_{k-1},\text{sd}_{k-2} : S_{k-2}\to S_{k-2}
+        $$
+        接下来证明对于$\text{sd}_k : S_k \to S_k$也满足图表的交换性以及若$X \subset \R^n$为凸集,则$\text{sd}_{k}(X)(A_{k}(X)) \subset A_{k}(X)$.为此,只需要考虑$S_k(\Delta_k)$的情况即可.考虑以下图表
+        \[\begin{tikzcd}
+            {S_k(\Delta_k)} && {S_{k-1}(\Delta_k)} && {S_{k-2}(\Delta_k)} \\
+            \\
+            {S_k(\Delta_k)} && {S_{k-1}(\Delta_k)} && {S_{k-2}(\Delta_k)}
+            \arrow["{\partial_k(\Delta_k)}", from=1-1, to=1-3]
+            \arrow["{\partial_{k-1}(\Delta_k)}", from=1-3, to=1-5]
+            \arrow["{\partial_k(\Delta_k)}", from=3-1, to=3-3]
+            \arrow["{\partial_{k-1}(\Delta_k)}", from=3-3, to=3-5]
+            \arrow["{sd_{k-1}(\Delta_k)}"{description}, from=1-3, to=3-3]
+            \arrow["{sd_{k-2}(\Delta_k)}"{description}, from=1-5, to=3-5]
+            \arrow["{sd_k(\Delta_k)}"{description}, dashed, from=1-1, to=3-1]
+            \arrow["Exact"', curve={height=30pt}, no head, from=3-1, to=3-5]
+            \arrow["Exact", curve={height=-30pt}, no head, from=1-1, to=1-5]
+        \end{tikzcd}\]
+        由于$\Delta_k$是一个星型集,因此最上层与最下层均为正合的,即$\ker(\partial_{k-1}(\Delta_k)) = \Image(\partial_k(\Delta_k))$.不难发现$\xi_k$变为$\sum_{i = 1}^k (-1)^i \text{sd}_{k-1}(\Delta_k)[e_0,\cdots,\hat{e_i},\cdots,e_k]$.不难发现
+        $$
+        \xi_k = \sum_{i = 0}^k (-1)^i H_{b_k} (\sum (-1)^i \text{sd}_{k-1}(\Delta_k)[e_0,\cdots,\hat{e_i},\cdots,e_k])
+        $$
+        其中$b_k = \frac{e_0+\cdots+e_k}{k+1}$.
+        因此不难得到$\text{sd}_k(\sigma) = \sigma_\# \xi_k$.满足所需要的条件.\\
+        由数学归纳法原理得知定理成立.
+\end{proof}
+此外,根据所熟知的Acylic Model Theorem Ib 可以得到存在一族自然变换构成链同伦使得$\bold{sd} \simeq 1_S$.
+\begin{theorem}
+    存在一族自然变换$h = \{h_k : S_k \to S_{k+1}\}$使得$\text{sd}_k - \text{id}_k = \partial_{k+1}h_k + h_{k+1}\partial_k$成立,且满足
+    $$
+    h_k(X)(A_k(X)) \subset A_{k+1}(X)
+    $$
+    对于所有的$X \in Obj(\bold{Top})$成立.
+\end{theorem}
+\begin{proof}
+    只需要证明$k = 0$时成立即可,观察图表
+    \[\begin{tikzcd}
+        && {S_0} && 0 \\
+        \\
+        {S_1} && {S_0}
+        \arrow["0", from=1-3, to=1-5]
+        \arrow["{\text{id}}", from=1-3, to=3-3]
+        \arrow[from=1-3, to=3-1]
+        \arrow["{\partial_1}"{description}, from=3-1, to=3-3]
+    \end{tikzcd}\]
+    得知$h_0 = 0$时满足条件.
+\end{proof}
+\begin{definition}
+    令$(V,\|\cdot\|)$为一个赋范空间且$c = \sum_{\sigma : \Delta_k \to V} n_{\sigma} \sigma \in S_k(V)$(只有有限多个$n_{\sigma}$不为$0$).令$\text{mesh}(c) := \max \{\text{diam }\sigma(\Delta_k) : n_{\sigma}\neq 0\}$.
+\end{definition}
+不难看出$\text{mesh }[P_0,\cdots,P_{k+1}] = \sup_{i,j} \| P_i - P_j\|$.
+\begin{lemma}
+    若$c \in A_q(V)$,则
+    $$
+    \text{mesh}(\text{sd }c) \leq \frac{q}{q+1}\text{mesh}(c)
+    $$
+    \label{lem:3.6.4}
+\end{lemma}
+\begin{proof}
+    使用数学归纳法进行证明\\
+    ($1^\circ$)对于$q = 1$时,是显然成立的.\\
+    ($2^\circ$)对于$q = k$时,考虑$c = (x_0,\cdots,x_k)$,令$b = \frac{\sum x_i}{q+1}$,由于$\|b - x_i\| = \|\frac{x_1+\cdots+x_{i-1}+x_{i+1}+\cdots+x_k-kx_i}{k+1}\|\leq \frac{k}{k+1}\text{mesh}(x_0,\cdots,x_k)$因此得到
+    $$
+    \text{mesh }(\text{sd}c) \leq \sup (\frac{q}{q+1}\text{mesh}(x_0,\cdots,x_k),\text{mesh}(\text{sd}\partial c))
+    $$
+    而据假设有$\text{mesh}(\text{sd} \partial c)\leq \frac{q-1}{q}\text{mesh}\partial c$
+\end{proof}
+令$X$为一拓扑空间,且$\mathcal{U} = \{X_{\alpha}\}_{\alpha \in \mathscr{A}}$为$X$的一族子集.则$\forall \alpha \in \mathscr{A}$有下图交换.
+\[\begin{tikzcd}
+	{S_k(X_\alpha)} && {S_k(X)} \\
+	\\
+	{S_{k-1}(X_\alpha)} && {S_{k-1}(X)}
+	\arrow[hook, from=1-1, to=1-3]
+	\arrow[hook, from=3-1, to=3-3]
+	\arrow["{\partial_k(X_\alpha)}"{description}, from=1-1, to=3-1]
+	\arrow["{\partial_k(X)}"{description}, from=1-3, to=3-3]
+\end{tikzcd}\]
+取$S_k^\mathcal{U} := \sum_{\alpha \in \mathscr{A}}S_k(X_\alpha)$即
+$$
+S_k^\mathcal{U}(X) := \Z^{\bigoplus\{\sigma:\Delta_k \to X : \exists \alpha \in \mathscr{A} \text{使得} \sigma(\Delta_k)\subset X_\alpha\}}
+$$
+同样地,有
+\[\begin{tikzcd}
+	{S_k^{\mathcal{U}}(X)} && {S_k(X)} \\
+	\\
+	{S_{k-1}^{\mathcal{U}}(X)} && {S_{k-1}(X)}
+	\arrow[hook, from=1-1, to=1-3]
+	\arrow[hook, from=3-1, to=3-3]
+	\arrow["{\partial_k^{\mathcal{U}}(X):=\partial_k(X)\mid_{S_k^\mathcal{U}(X)}}"{description}, from=1-1, to=3-1]
+	\arrow["{\partial_k(X)}"{description}, from=1-3, to=3-3]
+\end{tikzcd}\]
+将上文中的集合$X_\alpha$改为$X$的一个覆盖$\mathcal{U}$中的一个成员即可得到
+\begin{definition}
+    设$\mathcal{U}$为$X$的一个覆盖,即$\bigcup_{U \in \mathcal{U}} U = X$,奇异单形$\sigma : \Delta_q \to X$称为是$\mathcal{U}$-小的,如果其像$\sigma(\Delta_k)$包含于某个$U \in \mathcal{U}$中.
+\end{definition}
+\begin{theorem}
+    (覆盖诱导链复形)设$\mathcal{U}$是$X$的一个自己租,并且其内部
+    $$
+    \text{int}\mathcal{U} := \{\text{int}U : U \in \mathscr{A}\}
+    $$
+    是$X$的开覆盖.则链映射$i : S^\mathcal{U}_\cdot(X) \to S_\cdot(X)$是链同伦等价.事实上,存在链映射$\tau : S_\cdot (X) \to S_\cdot^{\mathcal{U}}(X)$使$\tau \circ i = \text{id}$且$i \circ \tau \simeq \text{id}$.因此$i_\cdot = H_\cdot (S^\mathcal{U}_\cdot(X))\cong H_\cdot (S_\cdot (X))$.
+\end{theorem}
+\begin{proof}
+    注意到对于每个$k$阶奇异单形$\sigma : \Delta_k \to X$,令
+    $$
+    m(\sigma):=\min \{m \in \N \cup \{0\}: \text{sd}_k(X)^m \sigma \in S_k^\mathcal{U}(X)\}
+    $$
+    由引理\ref{lem:3.6.4}可知,对于任意的$\sigma \in S_k(X)$有$m(\sigma)$存在.\\
+    一个很天真(也很自然)的想法是将$"\tau"$(并不是真正的$\tau$)定义为$"\tau"\sigma := \text{sd}_k(X)^{m(\sigma)}\sigma$(将$\sigma$细分到每个"碎片"都完全处于$\mathcal{U}$中的某些成员内).\\亦即以下图表交换
+    \[\begin{tikzcd}
+        {S_k(X)} && {S_k^\mathcal{U}(X)} \\
+        \\
+        {S_{k-1}(X)} && {S_{k-1}^\mathcal{U}(X)}
+        \arrow["{"\tau"_k}", from=1-1, to=1-3]
+        \arrow["{"\tau"_{k-1}}", from=3-1, to=3-3]
+        \arrow["{\partial_k}"{description}, from=1-1, to=3-1]
+        \arrow["{\partial_k^\mathcal{U}}"{description}, from=1-3, to=3-3]
+    \end{tikzcd}\]
+    这意味着
+    $$
+    \sum_{i= 0}^k(-1)^i \text{sd}_{k-1}(X)^{m(\sigma_i)}\sigma_i = \sum_{i = 0}^k(-1)^i \text{sd}_{k-1}(X)^{m(\sigma)}\sigma_i
+    $$
+    但是我们清楚地知道$m(\sigma_i)\leq m(\sigma)$.而且常常是严格小于的.\\
+    这也就告诉我们必须得调整$"\tau"_k$.\\
+    我们将其调整为$\tau(\sigma) := \text{sd}_k(X)^{m(\sigma)} - T_k(\sigma)$因此问题就转化为如何去选取一个合适的$T_k$使得下图交换.
+    \[\begin{tikzcd}
+        \sigma &&&& {\text{sd}_k(X)^{m(\sigma)}\sigma-T_k(\sigma)} \\
+        & {S_k(X)} && {S_k^\mathcal{U}(X)} \\
+        \\
+        & {S_{k-1}(X)} && {S_{k-1}^\mathcal{U}(X)} & {(\sum_{i=0}^k(-1)^i\text{sd}_{k-1}(X)^{m(\sigma)}\sigma_i)-\partial T_k(\sigma)} \\
+        {\sum_{i = 0}^k(-1)^i \sigma_i} &&&& {\sum_{i = 0}^k(-1)^i \sigma_i(\text{sd}_{k-1}(X)^{m(\sigma_i)}\sigma_i-T_{k-1}(\sigma_i))}
+        \arrow["{\tau_k}", from=2-2, to=2-4]
+        \arrow["{\tau_{k-1}}", from=4-2, to=4-4]
+        \arrow["{\partial_k}"{description}, from=2-2, to=4-2]
+        \arrow["{\partial_k^\mathcal{U}}"{description}, from=2-4, to=4-4]
+        \arrow[maps to, from=5-1, to=5-5]
+        \arrow[maps to, from=1-5, to=4-5]
+        \arrow[maps to, from=1-1, to=1-5]
+        \arrow[maps to, from=1-1, to=5-1]
+        \arrow["\in"{marking}, draw=none, from=5-1, to=4-2]
+        \arrow["\in"{marking}, draw=none, from=1-1, to=2-2]
+        \arrow["\ni"{marking}, draw=none, from=1-5, to=2-4]
+        \arrow["\ni"{marking}, draw=none, from=4-5, to=4-4]
+        \arrow["\ni"{marking}, draw=none, from=5-5, to=4-4]
+        \arrow["{=}"{marking}, color={rgb,255:red,214;green,92;blue,92}, draw=none, from=4-5, to=5-5]
+    \end{tikzcd}\]
+    我们需要选取合适的$T_k$使得
+    $$
+    \sum_{i = 0}^k(-1)^i \sigma_i(\text{sd}_{k-1}(X)^{m(\sigma_i)}\sigma_i-T_{k-1}(\sigma_i)) = (\sum_{i=0}^k(-1)^i\text{sd}_{k-1}(X)^{m(\sigma)}\sigma_i)-\partial T_k(\sigma)
+    $$
+    因此得到
+    $$
+    \partial T_k(\sigma) - \sum_{i = 0}^k(-1)^iT_{k-1}(\sigma_i) = \sum_{i = 0}^k(-1)^i (\text{sd}_{k-1}(X)^{m(\sigma)} - \text{sd}_{k-1}(X)^{m(\sigma_i)})\sigma_i
+    $$
+    针对$\text{sd}_{k-1}(X)^{m(\sigma)} - \text{sd}_{k-1}(X)^{m(\sigma_i)}$部分,发现它可以被转化为
+    \begin{equation}
+    (\text{sd}_{k-1}(X)-\text{id}_{S_{k-1}(X)})(\text{sd}_{k-1}(X)^{m(\sigma)-1}+\cdots+\text{sd}_{k-1}(X)^{m(\sigma_i)})
+    \tag{1}
+    \label{equ:3.6.5.1}
+    \end{equation}
+    由于$\text{id}_{S_{k-1}}\simeq \text{sd}_{k-1}(X)$,因此存在$h_{k-1}:S_{k-1} \to S_k$.
+    \begin{eqnarray*}
+        (\ref{equ:3.6.5.1}) &=& \partial_{k}(X)h_{k-1}(X)(\text{sd}_{k-1}(X)^{m(\sigma)-1}+\cdots+\text{sd}_{k-1}(X)^{m(\sigma_i)})\\
+        &+& h_{k-2}(X)\partial_{k-1}(X)(\text{sd}_{k-1}(X)^{m(\sigma)-1}+\cdots+\text{sd}_{k-1}(X)^{m(\sigma_i)})
+    \end{eqnarray*}
+    带回原式中得到
+    \begin{eqnarray*}
+        \partial_k(X)T_k(X) - \sum_{i = 0}^k (-1)^i T_{k-1}(\sigma_i) &=& \partial_k(X)(\sum_{i = 0}^k (-1)^i h_{k-1}(X)(\text{sd}_{k-1}(X)^{m(\sigma)-1}+\cdots+\text{sd}_{k-1}^{m(\sigma_i)}))\sigma_i\\
+        &+& \underline{\sum_{i = 0}^k (-1)^i h_{k-2}(X)\partial_{k-1}(X)(\text{sd}_{k-1}(X)^{m(\sigma)-1}+\cdots+\text{sd}_{k-1})\sigma_i}
+    \end{eqnarray*}
+    下方画横线的部分可以写为
+    \begin{equation}
+    \sum_{i = 0}^k (-1)^i h_{k-2}(X) (\text{sd}_{k-2}(X)^{m(\sigma)-1}+\cdots+\text{sd}_{k-2}^{m(\sigma_i)})\partial_{k-1}(X)\sigma_i
+    \label{equ:3.6.5.2}\tag{2}
+    \end{equation}
+    因此不难看出$T_k$可以取成
+    $$
+    T_k(\sigma) = \sum_{i = 0}^k (-1)^i h_{k-1}(\text{sd}_{k-1}(X)^{m(\sigma)-1}+\cdots+\text{sd}_{k-1}^{m(\sigma_i)})\sigma_i
+    $$
+    为此,我们需要验证
+    $$
+    \sum_{i = 0}^k (-1)^i T_{k-1}(\sigma_i)  = -(\ref{equ:3.6.5.2})
+    $$
+    将$T_{k-1}$的取法带入原式得到
+    \begin{align}
+        &\sum_{i = 0}^k(-1)^i T_{k-1}(\sigma_i)\notag \\
+        &= \sum_{i = 0}^k (-1)^i\sum_{j = 0}^{k-1}(-1)^j h_{k-2}(X)(\text{sd}_{k-2}(X)^{m(\sigma_i)-1}+\cdots +\text{sd}_{k-2}(X)^{m(\sigma_i)_j})(\sigma_i)_j\notag\\
+        &=\sum_{i = 0}^k\sum_{j = 0}^{k-1}(-1)^{i+j}h_{k-2}(X)(\text{sd}_{k-2}(X)^{m(\sigma_i)-1}+\cdots +\text{sd}_{k-2}(X)^{m(\sigma_i)_j})(\sigma_i)_j
+        \tag{3}\label{equ:3.6.5.3}
+    \end{align}
+    而
+    \begin{equation}
+        (\ref{equ:3.6.5.2}) = \sum_{i = 0}^k\sum_{j = 0}^{k-1}(-1)^{i+j}h_{k-2}(X)(\text{sd}_{k-2}(X)^{m(\sigma)-1}+\cdots +\text{sd}_{k-2}(X)^{m(\sigma_i)})(\sigma_i)_j
+        \tag{4}
+        \label{equ:3.6.5.4}
+    \end{equation}
+    得到
+    \begin{equation}
+        (\ref{equ:3.6.5.3})+(\ref{equ:3.6.5.4}) = \sum_{i = 0}^k\sum_{j = 0}^{k-1}(-1)^{i+j}h_{k-2}(X)(\text{sd}_{k-2}(X)^{m(\sigma)-1}+\cdots +\text{sd}_{k-2}(X)^{m(\sigma_i)_j})(\sigma_i)_j
+        \tag{5}
+        \label{equ:3.6.5.5}
+    \end{equation}
+    由于$(\sigma_i)_j = (\sigma_{j})_{i-1}$因而
+    $$
+    h_{k-2}(X)(\text{sd}_{k-2}(X)^{m(\sigma)-1}+\cdots+\text{sd}_{k-2}(X)^{m(\sigma_i)_j}) =  h_{k-2}(X)(\text{sd}_{k-2}(X)^{m(\sigma)-1}+\cdots+\text{sd}_{k-2}(X)^{m(\sigma_j)_{i-1}})
+    $$
+    由于$(-1)\cdot(-1)^{i+j - 1} = (-1)^{i+j}$
+    因此得到(\ref{equ:3.6.5.5}) = 0
+    即$T_k$的定义合理.\\
+    因此得到$\tau$为
+    \[\begin{tikzcd}
+        {\tau_k} & {S_k(X)} && {S_k^\mathcal{U}(X)} \\
+        & {(\sigma:\Delta_k \to X)} && {\text{sd}_{k}(X)^{m(\sigma)}\sigma - \sum_{i = 0}^k (-1)^i h_{k-1}(X)(\sum_{j = m(\sigma_i)}^{m(\sigma)-1}\text{sd}_{k-1}\sigma_i)}
+        \arrow["{:}"{marking}, draw=none, from=1-1, to=1-2]
+        \arrow[from=1-2, to=1-4]
+        \arrow["\in"{marking}, draw=none, from=2-2, to=1-2]
+        \arrow["\in"{marking}, draw=none, from=2-4, to=1-4]
+        \arrow[maps to, from=2-2, to=2-4]
+    \end{tikzcd}\]
+    显然有$(\tau \circ i)_\cdot = \text{id}_{S^\mathcal{U}_\cdot (X)}$\\
+    我们断言$(i \circ \tau)_\cdot \simeq \text{id}_{S_\cdot(X)}$于是有($H_k$为它们之间的链同伦,$h_k$是$\text{id}_{S_k}$与$\text{sd}_k(X)$的链同伦,两者并不一致)
+    \begin{align}
+        (i \circ \tau)_k \sigma - \sigma &= \partial_{k+1}H_k\sigma + H_{k-1}\partial_k(X)\sigma\notag\\
+        &=(\text{sd}_{k}(X)^{m(\sigma)}\sigma - \sigma) - \sum_{i = 0}^k (-1)^i h_{k-1}(X)(\sum_{j = m(\sigma_i)}^{m(\sigma)-1}\text{sd}_{k-1}\sigma_i)\notag\\
+        &=(\text{sd}_k(X) - \text{id}_{S_k(X)})(\sum_{j = 0}^{m(\sigma)-1}\text{sd}_k(X)^j\sigma)- \sum_{i = 0}^k (-1)^i h_{k-1}(X)(\sum_{j = m(\sigma_i)}^{m(\sigma)-1}\text{sd}_{k-1}\sigma_i)\notag\\
+        &= (\partial_{k+1}(X)h_k(X)+h_{k-1}\partial_k(X))(\sum_{j = 0}^{m(\sigma)-1}\text{sd}_k(X)^j\sigma)- \sum_{i = 0}^k (-1)^i h_{k-1}(X)(\sum_{j = m(\sigma_i)}^{m(\sigma)-1}\text{sd}_{k-1}\sigma_i)\notag\\
+        &= \partial_{k+1}(X)h_k(X)(\sum_{j = 0}^{m(\sigma)-1}\text{sd}_k(X)^j\sigma)+h_{k-1}(X)(\sum_{j = 0}^{m(\sigma)-1}\text{sd}_{k-1}(X)^j \partial_k(X))\notag\\
+        &-\sum_{i = 0}^k (-1)^i h_{k-1}(X)(\sum_{j = m(\sigma_i)}^{m(\sigma)-1}\text{sd}_{k-1}\sigma_i)
+    \end{align}
+    于是可以令$H_k \sigma := h_k(X)(\sum_{j = 0}^{m(\sigma)-1}\text{sd}_k(X)^j\sigma)$.
+\end{proof}
+\subsection{Homology Exact Sequences}
+\begin{definition}
+    由Abel群与同态所组成的序列
+    \[\begin{tikzcd}
+        C && {C'} && {C''}
+        \arrow["f"', from=1-1, to=1-3]
+        \arrow["g", from=1-3, to=1-5]
+    \end{tikzcd}\]
+    如果$\ker g = \Image f$则称其在$D$处正合(Exact).
+\end{definition}
+由Abel群和同态组成的序列
+\[\begin{tikzcd}
+	\cdots && {G_{i-1}} && {G_i} && {G_{i+1}} && \cdots
+	\arrow[from=1-1, to=1-3]
+	\arrow["{\phi_{i-1}}", from=1-3, to=1-5]
+	\arrow["{\phi_{i}}", from=1-5, to=1-7]
+	\arrow[from=1-7, to=1-9]
+\end{tikzcd}\]
+如果它在每个Abel群处均正合则称其为一个正合序列.\\
+\begin{example}
+    正合列
+    \[\begin{tikzcd}
+        0 && {G_1} && {G_2} && 0
+        \arrow[from=1-1, to=1-3]
+        \arrow["h", from=1-3, to=1-5]
+        \arrow[from=1-5, to=1-7]
+    \end{tikzcd}\]
+    表示同态$G_1 \xrightarrow{h} G_2$是同构的.($\ker h = 0,\Image h = \ker 0 = G_2$).\\
+    短正合列
+    \[\begin{tikzcd}
+        0 && C && D && E && 0
+        \arrow[from=1-1, to=1-3]
+        \arrow["g", from=1-5, to=1-7]
+        \arrow["f", from=1-3, to=1-5]
+        \arrow[from=1-7, to=1-9]
+    \end{tikzcd}\]
+    表示$C \xrightarrow{f} D$是一个单同态,$ D \xrightarrow{g} E$是一个满同态,而且$\ker g = \Image f$.
+\end{example}
+正合概念也可以被推广到链复形上.
+\begin{definition}
+    链复形和链映射所组成的序列
+    \[\begin{tikzcd}
+        C && D && E
+        \arrow["g", from=1-3, to=1-5]
+        \arrow["f", from=1-1, to=1-3]
+    \end{tikzcd}\]
+    称为在$D$处正合,如果对于每个维数$k$,Abel群和同态的序列
+    \[\begin{tikzcd}
+        {C_k} && {D_k} && {E_k}
+        \arrow["{g_k}", from=1-3, to=1-5]
+        \arrow["{f_k}", from=1-1, to=1-3]
+    \end{tikzcd}\]
+    都在$D_k$处正合.
+\end{definition}
+\begin{definition}
+    设给定了链复形和链映射的短正合列
+    \[\begin{tikzcd}
+        0 && C && {C'} && {C''} && 0
+        \arrow["g", from=1-5, to=1-7]
+        \arrow["f", from=1-3, to=1-5]
+        \arrow[from=1-7, to=1-9]
+        \arrow[from=1-1, to=1-3]
+    \end{tikzcd}\]
+    对于每个维数$k$,我们来定义一个边缘同态(connected homomorphisms)$\partial_* : H_q(C'') \to H_{q-1}(C)$.只需要考察以下的交换图表
+    \[\begin{tikzcd}
+        && {} && {} & \textcolor{rgb,255:red,214;green,92;blue,92}{d} & {} & \textcolor{rgb,255:red,214;green,92;blue,92}{z''} & \textcolor{rgb,255:red,214;green,92;blue,92}{Z_k(C_\cdot'')} \\
+        0 && {C_{k}} && {C_k'} && {C_k''} && 0 \\
+        \\
+        0 && {C_{k-1}} && {C_{k-1}'} && {C_{k-1}''} && 0 \\
+        &&& \textcolor{rgb,255:red,214;green,92;blue,92}{z} && \textcolor{rgb,255:red,214;green,92;blue,92}{\partial'_k{d}} && \textcolor{rgb,255:red,214;green,92;blue,92}{0} \\
+        0 && {C_{k-2}} && {C_{k-2}'} \\
+        &&& \textcolor{rgb,255:red,214;green,92;blue,92}{\partial_{k-1}z} && \textcolor{rgb,255:red,214;green,92;blue,92}{0}
+        \arrow[from=2-1, to=2-3]
+        \arrow["{f_k}"{description}, from=2-3, to=2-5]
+        \arrow["{g_k}"{description}, from=2-5, to=2-7]
+        \arrow[from=2-7, to=2-9]
+        \arrow[from=1-3, to=2-3]
+        \arrow[from=1-5, to=2-5]
+        \arrow["{\partial_{k}}"{description}, from=2-3, to=4-3]
+        \arrow[from=4-1, to=4-3]
+        \arrow["{f_{k-1}}"{description}, from=4-3, to=4-5]
+        \arrow["{\partial'_{k}}"{description}, from=2-5, to=4-5]
+        \arrow["{g_{k-1}}"{description}, from=4-5, to=4-7]
+        \arrow[from=1-7, to=2-7]
+        \arrow["{\partial''_{k}}"', from=2-7, to=4-7]
+        \arrow[from=4-7, to=4-9]
+        \arrow["{\partial_{k-1}}"{description}, from=4-3, to=6-3]
+        \arrow[from=6-1, to=6-3]
+        \arrow["{\partial'_{k-1}}"{description}, from=4-5, to=6-5]
+        \arrow["{f_{k-2}}"{description}, from=6-3, to=6-5]
+        \arrow["\ni"{marking}, color={rgb,255:red,214;green,92;blue,92}, draw=none, from=5-4, to=4-3]
+        \arrow["\ni"{marking}, color={rgb,255:red,214;green,92;blue,92}, draw=none, from=5-6, to=4-5]
+        \arrow[color={rgb,255:red,214;green,92;blue,92}, maps to, from=5-4, to=5-6]
+        \arrow["\ni"{marking}, color={rgb,255:red,214;green,92;blue,92}, draw=none, from=5-8, to=4-7]
+        \arrow["\ni"{marking}, color={rgb,255:red,214;green,92;blue,92}, draw=none, from=1-6, to=2-5]
+        \arrow["\ni"{marking}, color={rgb,255:red,214;green,92;blue,92}, draw=none, from=1-8, to=2-7]
+        \arrow[color={rgb,255:red,214;green,92;blue,92}, from=5-4, to=7-4]
+        \arrow[color={rgb,255:red,214;green,92;blue,92}, maps to, from=5-6, to=7-6]
+        \arrow["\in"{marking}, color={rgb,255:red,214;green,92;blue,92}, draw=none, from=1-8, to=1-9]
+        \arrow[color={rgb,255:red,214;green,92;blue,92}, from=1-8, to=5-8]
+        \arrow[color={rgb,255:red,214;green,92;blue,92}, from=1-6, to=5-6]
+        \arrow[color={rgb,255:red,214;green,92;blue,92}, from=1-6, to=1-8]
+        \arrow[color={rgb,255:red,214;green,92;blue,92}, from=5-6, to=5-8]
+        \arrow[color={rgb,255:red,214;green,92;blue,92}, maps to, from=7-4, to=7-6]
+        \arrow["\ni"{marking}, color={rgb,255:red,214;green,92;blue,92}, draw=none, from=7-4, to=6-3]
+        \arrow["\ni"{marking}, color={rgb,255:red,214;green,92;blue,92}, draw=none, from=7-6, to=6-5]
+    \end{tikzcd}\]
+    在$Z_k(C''_\cdot)$中选择一个元素$z''$,由于该行为一短正合列,因此$g_k$是一个满射,因此可以在$C'_k$中找到一个$d$使得右侧图表交换.即$g_{k-1}\partial_{k}'d = 0$因此可以得知$\partial_k'd \in \ker{g_{k-1}}$.由于该行也是一个短正合列,因此可以得到$\ker{g_{k-1}} = \Image{f_{k-1}}$即存在$z\in C_{k-1}$使得$f_{k-1}z = \partial_k'd$,而由于左下角的图表也是交换的,因此有$f_{k-2}\partial_{k-1}z = 0$即$\partial_{k-1}z = 0$($f$为单射)从而得到了$z \in Z_{k-1}(C_\cdot)$.于是不难定义一个自然变换$\partial_*$.
+    \[\begin{tikzcd}
+        {H_k(C''_\cdot)} && {H_{k-1}(C_\cdot)} \\
+        {[z'']} && {[z]} \\
+        {z''+B_k(C'')} && {z+B_k(C)}
+        \arrow["{\partial_*}", from=1-1, to=1-3]
+        \arrow[maps to, from=2-1, to=2-3]
+        \arrow["{:=}"{marking}, draw=none, from=2-1, to=3-1]
+        \arrow["{:=}"{marking}, draw=none, from=2-3, to=3-3]
+    \end{tikzcd}\]
+    但是这个自然变换的定义不一定合理,因为我们尚不确定$B_k(C'')$是否会对于整个自然变换造成影响.
+    \begin{proof}
+    为此,我们先写出整个自然变换的表达式,得到
+    $$
+    [z''] \mapsto [f^{-1}_{k-1}\partial_k' g_k^{-1}(z'')]
+    $$
+    对于$z_1'',z_2''\in Z_k(C''_\cdot)$且满足$z_1'' = z_2''+b$其中$b \in B_k(C''_\cdot)$.
+    由于$g_k$是一个满射,因此可以考虑以下交换图表
+    \[\begin{tikzcd}
+        {C_k'} && {C_k''} \\
+        \\
+        {C_k'/\ker g_k}
+        \arrow["\pi", from=1-1, to=3-1]
+        \arrow["{g_k}"', from=1-1, to=1-3]
+        \arrow["{\tilde{g_k}}", from=3-1, to=1-3]
+    \end{tikzcd}\]
+    不难发现$g^{-1}(z_1'') = g^{-1}(z_2'')+g^{-1}(b)$.且有$g^{-1}(b) = b'+\ker g_k$.对于$\ker g_k$由于$\ker g_k = \Image f_k$因此可以得到$f^{-1}_k (\ker g_k) = C_k$.\\
+    由于$b \in B_k(C_\cdot'')$因此可以考虑以下图表
+    \[\begin{tikzcd}
+        &&& \textcolor{rgb,255:red,214;green,92;blue,92}{b'_0} &&&& \textcolor{rgb,255:red,214;green,92;blue,92}{b_0} \\
+        &&&& {C_{k+1}'} && {C_{k+1}''} \\
+        &&& \textcolor{rgb,255:red,214;green,92;blue,92}{\partial_{k+1}'b_0'} &&&& \textcolor{rgb,255:red,214;green,92;blue,92}{b} & \textcolor{rgb,255:red,214;green,92;blue,92}{B_k(C.'')} \\
+        0 && {C_{k}} && {C_k'} && {C_k''} && 0 \\
+        &&& \textcolor{rgb,255:red,214;green,92;blue,92}{0} \\
+        0 && {C_{k-1}} && {C_{k-1}'} && {C_{k-1}''} && 0 \\
+        \\
+        0 && {C_{k-2}} && {C_{k-2}'}
+        \arrow[from=4-1, to=4-3]
+        \arrow["{f_k}"{description}, from=4-3, to=4-5]
+        \arrow["{g_k}"{description}, from=4-5, to=4-7]
+        \arrow[from=4-7, to=4-9]
+        \arrow["{\partial_{k}}"{description}, from=4-3, to=6-3]
+        \arrow[from=6-1, to=6-3]
+        \arrow["{f_{k-1}}"{description}, from=6-3, to=6-5]
+        \arrow["{\partial'_{k}}"{description}, from=4-5, to=6-5]
+        \arrow["{g_{k-1}}"{description}, from=6-5, to=6-7]
+        \arrow["{\partial''_{k}}"', from=4-7, to=6-7]
+        \arrow[from=6-7, to=6-9]
+        \arrow["{\partial_{k-1}}"{description}, from=6-3, to=8-3]
+        \arrow[from=8-1, to=8-3]
+        \arrow["{\partial'_{k-1}}"{description}, from=6-5, to=8-5]
+        \arrow["{f_{k-2}}"{description}, from=8-3, to=8-5]
+        \arrow["\in"{marking}, color={rgb,255:red,214;green,92;blue,92}, draw=none, from=1-4, to=2-5]
+        \arrow["\ni"{marking}, color={rgb,255:red,214;green,92;blue,92}, draw=none, from=1-8, to=2-7]
+        \arrow["{g_{k+1}}"{description}, from=2-5, to=2-7]
+        \arrow["{\partial'_{k+1}}"{description}, from=2-5, to=4-5]
+        \arrow["{\partial''_{k+1}}", from=2-7, to=4-7]
+        \arrow[color={rgb,255:red,214;green,92;blue,92}, maps to, from=1-8, to=3-8]
+        \arrow[color={rgb,255:red,214;green,92;blue,92}, from=1-4, to=3-4]
+        \arrow[color={rgb,255:red,214;green,92;blue,92}, maps to, from=3-4, to=3-8]
+        \arrow[color={rgb,255:red,214;green,92;blue,92}, maps to, from=1-4, to=1-8]
+        \arrow["\in"{marking}, color={rgb,255:red,214;green,92;blue,92}, draw=none, from=3-4, to=4-5]
+        \arrow["\ni"{marking}, color={rgb,255:red,214;green,92;blue,92}, draw=none, from=3-8, to=4-7]
+        \arrow[color={rgb,255:red,214;green,92;blue,92}, maps to, from=3-4, to=5-4]
+        \arrow["\in"{marking}, color={rgb,255:red,214;green,92;blue,92}, draw=none, from=3-8, to=3-9]
+        \arrow["\in"{marking}, color={rgb,255:red,214;green,92;blue,92}, draw=none, from=5-4, to=6-5]
+    \end{tikzcd}\]
+    即存在$b_0$使得$\partial_{k+1}b_0 = b$且由于$g_{k+1}$也是满射,因此存在$b_0'$使得$g_{k+1}(b_0') = b_0$从而考虑$\partial_{k+1}'b_0'$.不难发现它也是$b$的一个原像.因此可以令$b' = \partial_{k+1}'b_0$.\\
+    从而,我们有$g^{-1}(z_1'') = g^{-1}(z_2'')+\partial_{k+1}'b_0' + \ker g_{k}$而$\partial_k'\partial_{k+1}' = 0$因此得到
+    $$
+    \partial_k'g^{-1}_k(z_1'') = \partial'_k(g_k^{-1}(z_2'') + \partial'_{k+1}b_0'+\ker g_k) = \partial'_kg^{-1}(z_2'')+\partial_k'\ker g_k
+    $$
+    因此,我们只需要证明$f^{-1}\partial_k' \ker g_k \subset B_{k-1}(C.)$即可.\\
+    由于横向链是正合的,有$\ker g_k = \Image f_k$因此可以构造反向的同态$f_k^{-1}: \ker g_k \to C_k$.由于原图表的交换性不难验证
+    $$
+    f^{-1}_{k-1}\circ \partial_k' = \partial_k \circ f^{-1}_k
+    $$
+    因此得到$\ker g_k \in B_{k-1}(C.)$.从而$f^{-1}_{k-1}\partial_kg^{-1}_k(z_1'') = f^{-1}_{k-1}\partial_k g^{-1}_k (z_2'')+b_1$,$b_1\in B_{k-1}(C.)$.
+\end{proof}
+\end{definition}
+\begin{theorem}
+    (正合同调序列)
+    设有链复形与链映射的短正合列
+    \[\begin{tikzcd}
+        0 && {C.} && {C.'} && {C.''} && 0
+        \arrow["g", from=1-5, to=1-7]
+        \arrow["f", from=1-3, to=1-5]
+        \arrow[from=1-7, to=1-9]
+        \arrow[from=1-1, to=1-3]
+    \end{tikzcd}\]
+    则有长的正合同调序列
+    \[\begin{tikzcd}
+        \cdots & {H_k(C.)} & {H_k(C'.)} & {H_k(C''.)} & {H_{k-1}(C.)} & {H_{k-1}(C'.)} & \cdots
+        \arrow["{f_*}", from=1-2, to=1-3]
+        \arrow["{g_*}", from=1-3, to=1-4]
+        \arrow["{\partial_*}", from=1-4, to=1-5]
+        \arrow["{f_*}", from=1-5, to=1-6]
+        \arrow[from=1-6, to=1-7]
+        \arrow[from=1-1, to=1-2]
+    \end{tikzcd}\]
+\end{theorem}
+\begin{proof}
+    这无非是让我们证明\\
+    (A)$\Image g_* = \ker \partial_*$\\
+    (B)$\Image \partial_* = \ker f_*$\\
+    首先证明(A)\\
+    (A1): 先证明$\Image g_* \subset \ker \partial_*$\\
+    对于任意的$\sigma' \in Z_k(C')$有$\partial_*(g_*)_k(\sigma) = [f_{k-1}^{-1}\partial_k g^{-1}_{k-1}g_{k-1}\sigma] = [f_{k-1}^{-1}\partial_k \sigma]$
+    根据$\sigma \in Z_k(C')$可以直接得到$\partial_k \sigma = 0$因此$\Image g_* \subset \ker \partial_*$.\\
+    (A2): 再证明$\ker \partial_* \subset \Image g_*$\\
+    为此,我们需要取$[\sigma] \in \ker \partial_*$且$\sigma \in Z_k(C'')$得到$\partial_* [\sigma] = B_{k-1}(C)$即
+    $$
+    [f^{-1}_{k-1}\partial_kg_{k}^{-1}\sigma] = B_{k-1}(C)
+    $$
+    因此在$C$中存在$\tau$使得$\partial_k \tau = f^{-1}_{k-1}\partial_k g_k^{-1}\sigma$.因此可以令$\phi = g_k^{-1}\sigma - f_k^{-1}\tau$,由于$\partial_k \phi = 0$(显然)因此$\phi \in Z_k(C')$.\\
+    有$g_*([\phi]) = [\sigma - g_kf_k\tau]$由于$\ker f = \Image g$因此得到$g_k f_k \tau  =0 $\\
+    因此(A)成立.\\
+    (B)的情况只证明$\Image \partial_* \subset \ker f_*$,另外一半类似(A2)可证.\\
+    对于$\sigma \in Z_k(C'')$,由于$g_k$是一个满射,因此存在$\tau \in C'$使得$g_k(\tau) = \sigma$.而$f_*\partial_* [\sigma] = [\partial_k g_k^{-1}\sigma] = [\partial_k \tau]$而$\partial_k \tau \in B_{k-1}(C')$因此得到$[\partial_k \tau] = [0]$.
+\end{proof}
+\begin{theorem}
+    设有链复形和链映射的交换图表
+    \[\begin{tikzcd}
+        0 && {A.} && {B.} && {C.} && 0 \\
+        \\
+        0 && {A'.} && {B.} && {C.} && 0
+        \arrow[from=1-1, to=1-3]
+        \arrow[from=3-1, to=3-3]
+        \arrow["a"{description}, from=1-3, to=3-3]
+        \arrow["{f'.}"', from=3-3, to=3-5]
+        \arrow["{f.}", from=1-3, to=1-5]
+        \arrow["b"{description}, from=1-5, to=3-5]
+        \arrow["{g.'}"', from=3-5, to=3-7]
+        \arrow["{g.}", from=1-5, to=1-7]
+        \arrow["c"{description}, from=1-7, to=3-7]
+        \arrow[from=1-7, to=1-9]
+        \arrow[from=3-7, to=3-9]
+    \end{tikzcd}\]
+    其中两个横行都是链复形的正合列.则它们的正合同调序列之间有交换图表
+    \[\begin{tikzcd}
+        \cdots & {H_k(A.)} & {H_k(B.)} & {H_k(C.)} & {H_{k-1}(A.)} & {H_{k-1}(C.)} & \cdots \\
+        \cdots & {H_k(A.)} & {H_k(B.)} & {H_k(C'.)} & {H_{k-1}(A'.)} & {H_{k-1}(C'.)} & \cdots
+        \arrow["{f_*}", from=1-2, to=1-3]
+        \arrow["{g_*}", from=1-3, to=1-4]
+        \arrow["{\partial_*}", from=1-4, to=1-5]
+        \arrow["{f_*}", from=1-5, to=1-6]
+        \arrow[from=1-6, to=1-7]
+        \arrow[from=1-1, to=1-2]
+        \arrow["{c_*}"', from=1-4, to=2-4]
+        \arrow["{(\partial')_*}", from=2-4, to=2-5]
+        \arrow["{a_*}", from=1-5, to=2-5]
+        \arrow[from=2-5, to=2-6]
+        \arrow[from=2-6, to=2-7]
+        \arrow[from=2-1, to=2-2]
+        \arrow[from=2-2, to=2-3]
+        \arrow[from=2-3, to=2-4]
+        \arrow["{a_*}"', from=1-2, to=2-2]
+        \arrow["{b_*}"', from=1-3, to=2-3]
+        \arrow["{c_*}", from=1-6, to=2-6]
+    \end{tikzcd}\]
+\end{theorem}
+\begin{proof}
+    不难发现我们只需要证明
+    \[\begin{tikzcd}
+        {H_{k}(C.)} && {H_{k-1}(A.)} \\
+        \\
+        {H_k(C'.)} && {H_{k-1}(A'.)}
+        \arrow["{\partial_*}", from=1-1, to=1-3]
+        \arrow["{c_*}"', from=1-1, to=3-1]
+        \arrow["{(\partial')_*}"', from=3-1, to=3-3]
+        \arrow["{a_*}", from=1-3, to=3-3]
+    \end{tikzcd}\]
+    是交换的即可.即证
+    $$
+    (\partial')_* c_* = a_* \partial_*
+    $$
+    任取$\sigma \in Z_k(C.)$上式转化为证明
+    $$
+    a_*[f^{-1}_{k-1}\partial_kg^{-1}_k \sigma] = [(f')^{-1}_{k-1}\partial'_k(g')^{-1}_{k-1} c \sigma]
+    $$
+    由于我们有链复形与链映射的交换图表,并且该图表中上下两行均为短正合列,因此$f$为单射,$g$为满射,对于$f$,由于$f$是单射,因此可以构建$f^{-1}: \ker g \to A.$.因此结合图表的交换性可以得到$a f^{-1}_{k-1} = (f')^{-1}_{k-1} b$.而由于$b$是一个自然变换,因此$b \partial_k = \partial'_k b$.接下来考虑$b g^{-1}_k$.令$g_k(\tau) = \sigma$于是有$g^{-1}_k (\sigma) = \tau + \ker g$.从而$b(\tau + \ker g) = b\tau + b\ker g$由图表的交换性得知$g'. (b \tau + b \ker g) = c\tau$因此得知$bg_{k-1}^{-1} = (g')^{-1}_{k-1}c$,从而得知图表交换.
+\end{proof}
+正合序列的另一个妙用,通常被称为"五引理"
+\begin{lemma}
+    设有Abel群与同态的交换图表
+    \[\begin{tikzcd}
+        {A_1} && {A_2} && {A_3} && {A_4} && {A_5} \\
+        \\
+        {B_1} && {B_2} && {B_3} && {B_4} && {B_5}
+        \arrow["{f_1}", from=1-1, to=3-1]
+        \arrow["{\psi_1}", from=3-1, to=3-3]
+        \arrow["{\psi_2}", from=3-3, to=3-5]
+        \arrow["{\psi_3}", from=3-5, to=3-7]
+        \arrow["{\psi_4}", from=3-7, to=3-9]
+        \arrow["{\phi_1}", from=1-1, to=1-3]
+        \arrow["{f_2}", from=1-3, to=3-3]
+        \arrow["{\phi_2}", from=1-3, to=1-5]
+        \arrow["{f_3}", from=1-5, to=3-5]
+        \arrow["{\phi_3}", from=1-5, to=1-7]
+        \arrow["{f_4}", from=1-7, to=3-7]
+        \arrow["{\phi_4}", from=1-7, to=1-9]
+        \arrow["{f_5}", from=1-9, to=3-9]
+    \end{tikzcd}\]
+    其中两行都是正合列.如果$f_1,f_2,f_4,f_5$都是同构,那么$f_3$也是.
+\end{lemma}
+\begin{proof}
+将五引理拆分成两个部分进行证明:\\
+首先,注意到在图中已有$f_3$为同态,因此我们要做的任务无非就是证明$f_3$是一个双射.\\
+因此我们先证明$f_3$是一个单射.在这一点上,我们使用反证法:\\
+若$f_3$不是一个单射,则$\ker f_3 \neq 0$因此存在$c \in A_3$且$c \neq 0$使得$f_3(c) = 0$.\\
+因此可以得到$f_4 \circ \phi_3(c) = \psi_3\circ f_3(c) = 0$因$f_4$为单射(同构必为单射).从而得知$c \in \ker \phi_3 = \Image \phi_2$.即存在$c' \in A_2$使得$\phi_2(c') = c$.\\
+进一步,可以得到$f_3 \phi_2(c') = \psi_2 f_2(c') = 0$即$\psi_2(f_2(c')) = 0$即$f_2(c')\in \ker \psi_2 = \Image \psi_1$因此存在$c''\in B_1$,$\psi_1(c'') = f_2(c')$.由于$f_1$是一个满射,因此存在$a \in A_1$使得$f_1(a) = c''$.\\
+因此得知$c' = \phi_1(a)$($f_2$为单射,且$f_2(c')$为其像,故在其上可取逆),即$c = \phi_2\phi_1(a)$但是$c \neq 0$这与$\Image \phi_1 = \ker \phi_2$相矛盾.因此$f_3$为单射.\\
+再证明$f_3$是一个满射(法1).\\
+若对于$b \in B_3$,若$\psi_3(b) =0$即$b \in \ker \psi_3 = \Image \psi_2$则存在$b_2 \in B_2$使得$\psi_2(b_2) = b$.由于$f_2$是一个满射,因此可以得到存在$a_2 \in A_2$使得$f_2(a_2) = b_2$.由图表的交换性可知,$f_3\phi_2 a_2 = \psi_2 f_2 a_2 = b$因此存在$a_3 = \phi(a_2)$使得$f_3(a_3) = b$.\\
+若$\psi_3(b) \neq 0$,由于$f_4$是一个满射,因此存在$a_4 \in A_4$使得$f_4(a_4) = \psi_3(b)$即$\psi_4 f_4 (a_4) = \psi_4 \psi_3 (b) = 0$而$\psi_4 f_4 = f_5 \phi_4$而$f_5$为一个单射,因此$\phi_4(a) = 0$即$a \in \ker \phi_4 = \Image \phi_3$即存在$a_3 \in A_3$使得$\phi_3 a_3 = a_4$,那么$f_4 \phi_3 a_3 = \psi f_3 (a_3) = \psi_3 b$因此$f_3(a_3) = b$.即$f_3$为一个满射.\\
+法2:若$f_3$不是一个满射,则存在$b \in B_3$使得对于任意的$a \in A_3$都有$f_3(a) \neq b$.因此由图表的交换性得到$\psi_3 f_3 = f_4 \phi_3$因此$\psi_3(b) \neq f_4 \phi_3(x)$对于所有的$a \in A_3$成立.由于$f_4$为满射,因此存在$a_4 \in A_4$使得$f_4(a_4) = \psi(y)$,因此$a_4 \notin \Image \phi_3 = \ker \phi_4$从而$\phi_4(a_4)\neq 0$.而$f_5$为一个单射,因此得知$f_5 \phi_4(a_4)\neq 0$但是这与$\psi_4 \psi_3 b = 0$矛盾,因此$f_3$为满射.
+\end{proof}
+从证明中可以看出,上述五引理其实可以拆分为两个四引理进行证明.\\
+Abel群与同态的正合列
+\[\begin{tikzcd}
+	C && D && E
+	\arrow["f", from=1-1, to=1-3]
+	\arrow["g", from=1-3, to=1-5]
+\end{tikzcd}\]
+被称为是裂正合的,如果$f(C)$是$D$的直加项(即$D$分解为$f(C)$与另外某个子群的直和).下面的判别准则是常用的.
+\begin{proposition}
+    Abel群与同态的短正合列
+    \[\begin{tikzcd}
+        0 && C && D && E && 0
+        \arrow["f", from=1-3, to=1-5]
+        \arrow["g", from=1-5, to=1-7]
+        \arrow[from=1-1, to=1-3]
+        \arrow[from=1-7, to=1-9]
+    \end{tikzcd}\]
+    是裂正合的,当且仅当存在同态$k : E \to D$使得$g \circ k  = \text{id}_E$.
+\end{proposition}
+\begin{proof}
+Trivial.
+\end{proof}
+\begin{corollary}
+    如果Abel群与同态的短正合列
+    \[\begin{tikzcd}
+        0 && C && D && E && 0
+        \arrow[from=1-1, to=1-3]
+        \arrow[from=1-3, to=1-5]
+        \arrow[from=1-5, to=1-7]
+        \arrow[from=1-7, to=1-9]
+    \end{tikzcd}\]
+    其中$E$为自由Abel群,则这序列是裂正合的.
+\end{corollary}
+\begin{remark}
+    请读着学至此处后看李文威《代数学方法-基础架构》$\S6.8$,里边将使用代数的方法重构同调论
+\end{remark}
+\subsection{Mayer-Vietoris Sequences}
+令$X$为一个拓扑空间,$X_1,X_2 \subset X$,取$\mathcal{U}=\{X_1,X_2\}$得到$S^\mathcal{U}(X_1\cup X_2) = S_k(X_1)+S_k(X_2)$.由此我们可以得到如下的短正合列.
+\[\begin{tikzcd}
+	0 && {S.(X_1\cap X_2)} && {S.(X_1)\oplus S.(X_2)} && {S^\mathcal{U}(X_1\cup X_2)} && 0 \\
+	0 && {S_k(X_1\cap X_2)} && {S_k(X_1)\oplus S_k(X_2)} && {S_k(X_1)+S_k(X_2)} && 0 \\
+	&& c && {(c,-c)} \\
+	&&&& {(a,b)} && {a+b}
+	\arrow[from=1-1, to=1-3]
+	\arrow["{k.}", from=1-3, to=1-5]
+	\arrow["{j.}", from=1-5, to=1-7]
+	\arrow[from=1-7, to=1-9]
+	\arrow["{k_k}", from=2-3, to=2-5]
+	\arrow["{j_k}", from=2-5, to=2-7]
+	\arrow[from=2-7, to=2-9]
+	\arrow[from=2-1, to=2-3]
+	\arrow[maps to, from=3-3, to=3-5]
+	\arrow[maps to, from=4-5, to=4-7]
+\end{tikzcd}\]
+不难发现它们与边缘映射是可以交换的.\\
+既然得到了一个链复形之间的短正合列,这也就可以得到其诱导的长正合同调列
+\[\begin{tikzcd}
+	&&&& \cdots \\
+	\\
+	{H_{k+1}(X_1\cap X_2)} && {H_{k+1}(X_1)\oplus H_{k+1}(X_2)} && {H_{k+1}(S^\mathcal{U}(X_1\cup X_2))} \\
+	\\
+	{H_{k}(X_1\cap X_2)} && {H_{k}(X_1)\oplus H_k(X_2)} && {H_k(S^\mathcal{U}(X_1\cup X_2))} \\
+	\\
+	\cdots &&&& {H_1(S^\mathcal{U}(X_1\cup X_2))} \\
+	\\
+	{H_0(X_1\cap X_2)} && {H_{0}(X_1)\oplus H_k(X_2)} && {H_0(S^\mathcal{U}(X_1\cup X_2))} && 0
+	\arrow["{\partial_*}", from=3-5, to=5-1]
+	\arrow[from=3-1, to=3-3]
+	\arrow[from=3-3, to=3-5]
+	\arrow[from=5-1, to=5-3]
+	\arrow[from=5-3, to=5-5]
+	\arrow["{\partial_*}"', from=1-5, to=3-1]
+	\arrow["{\partial_*}", from=5-5, to=7-1]
+	\arrow[dashed, from=7-1, to=7-5]
+	\arrow[from=7-5, to=9-1]
+	\arrow["{k_*}", from=9-1, to=9-3]
+	\arrow["{j_*}", from=9-3, to=9-5]
+	\arrow[from=9-5, to=9-7]
+\end{tikzcd}\]
+\begin{definition}
+    设$X_1,X_2$同为某个空间$X$的子空间,如果嵌入映射$i: S^\mathcal{U} (X_1 \cup X_2) \to S(X_1 \cup X_2)$是一个链同伦等价,我们说这个两个子空间构成了一个\emph{Mayer-Vietories耦}$\{X_1,X_2\}$(from an excisive couple).
+\end{definition}
+因此原来的长正合同调链变为
+\[\begin{tikzcd}
+	&& \cdots \\
+	\\
+	{H_{k+1}(X_1\cap X_2)} & {H_{k+1}(X_1)\oplus H_{k+1}(X_2)} & {H_{k+1}(S^\mathcal{U}(X_1\cup X_2))} & \textcolor{rgb,255:red,214;green,92;blue,92}{H_{k+1}(X_1\cup X_2)} \\
+	\\
+	{H_{k}(X_1\cap X_2)} & {H_{k}(X_1)\oplus H_k(X_2)} & {H_k(S^\mathcal{U}(X_1\cup X_2))} & \textcolor{rgb,255:red,214;green,92;blue,92}{H_k(X_1\cup X_2)} \\
+	\\
+	\cdots && {H_1(S^\mathcal{U}(X_1\cup X_2))} & \textcolor{rgb,255:red,214;green,92;blue,92}{H_1(X_1\cup X_2)} \\
+	&&& \textcolor{rgb,255:red,214;green,92;blue,92}{H_0(X_1\cup X_2)} \\
+	{H_0(X_1\cap X_2)} & {H_{0}(X_1)\oplus H_k(X_2)} & {H_0(S^\mathcal{U}(X_1\cup X_2))} & 0
+	\arrow["{\partial_*}", from=3-3, to=5-1]
+	\arrow[from=3-1, to=3-2]
+	\arrow[from=3-2, to=3-3]
+	\arrow[from=5-1, to=5-2]
+	\arrow[from=5-2, to=5-3]
+	\arrow["{\partial_*}"', from=1-3, to=3-1]
+	\arrow["{\partial_*}", from=5-3, to=7-1]
+	\arrow[dashed, from=7-1, to=7-3]
+	\arrow[from=7-3, to=9-1]
+	\arrow["{k_*}", from=9-1, to=9-2]
+	\arrow["{j_*}", from=9-2, to=9-3]
+	\arrow["i", color={rgb,255:red,214;green,92;blue,92}, from=3-3, to=3-4]
+	\arrow["\cong"', color={rgb,255:red,214;green,92;blue,92}, from=3-3, to=3-4]
+	\arrow["\cong"', color={rgb,255:red,214;green,92;blue,92}, from=5-3, to=5-4]
+	\arrow["i", color={rgb,255:red,214;green,92;blue,92}, from=5-3, to=5-4]
+	\arrow["i", color={rgb,255:red,214;green,92;blue,92}, from=7-3, to=7-4]
+	\arrow["\cong"', color={rgb,255:red,214;green,92;blue,92}, from=7-3, to=7-4]
+	\arrow["i", color={rgb,255:red,214;green,92;blue,92}, from=9-3, to=8-4]
+	\arrow["\cong"', color={rgb,255:red,214;green,92;blue,92}, from=9-3, to=8-4]
+	\arrow[from=9-3, to=9-4]
+\end{tikzcd}\]
+\begin{example}
+    若$\text{int}_{X_1\cup X_2} X_1 \cup \text{int}_{X_1\cup X_2} X_2 = X_1\cup X_2$,则$\{X_1,X_2\}$是一个Mayer-Vietories耦.
+\end{example}
+接下来看几个例子
+\begin{example}
+    $S^n: = \{(x_0,\cdots,x_n)\in \R^{n+1}:\sum_{j = 0}^n x_j^2 =1\}$考虑以下示意图.
+    \[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+        %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+        
+        %Curve Lines [id:da6447510678772372] 
+        \draw  [dash pattern={on 4.5pt off 4.5pt}]  (158,135.93) .. controls (160.87,222.51) and (286.87,220.51) .. (287.87,135.93) ;
+        %Straight Lines [id:da7068345970204506] 
+        \draw    (73.87,166) -- (156.83,102.51) ;
+        %Straight Lines [id:da25583885020092656] 
+        \draw    (73.87,166) -- (290.58,166) ;
+        %Straight Lines [id:da42073372384192465] 
+        \draw    (290.58,166) -- (373.53,102.51) ;
+        %Curve Lines [id:da5039460348738054] 
+        \draw    (158,135.93) .. controls (160.87,52.51) and (286.87,48.51) .. (287.87,135.93) ;
+        %Curve Lines [id:da4163357490575319] 
+        \draw    (158,135.93) .. controls (167.87,161.51) and (275.87,163.51) .. (287.87,135.93) ;
+        %Curve Lines [id:da7188900081323275] 
+        \draw  [dash pattern={on 4.5pt off 4.5pt}]  (158,135.93) .. controls (169.87,110.51) and (281.87,110.51) .. (287.87,135.93) ;
+        %Shape: Free Drawing [id:dp524860491895933] 
+        \draw  [line width=3] [line join = round][line cap = round] (220.87,134.51) .. controls (220.87,134.51) and (220.87,134.51) .. (220.87,134.51) ;
+        %Straight Lines [id:da7782537742814564] 
+        \draw    (220.87,134.51) -- (220.87,26.51) ;
+        \draw [shift={(220.87,24.51)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        %Straight Lines [id:da016481957721015128] 
+        \draw    (156.83,102.51) -- (168.87,102.51) ;
+        %Straight Lines [id:da5864281284021768] 
+        \draw    (373.53,102.51) -- (278.87,102.51) ;
+        %Straight Lines [id:da3915884859719545] 
+        \draw  [dash pattern={on 4.5pt off 4.5pt}]  (168.87,102.51) -- (278.87,102.51) ;
+        
+        % Text Node
+        \draw (231,6.4) node [anchor=north west][inner sep=0.75pt]    {$x_{n}$};
+        % Text Node
+        \draw (320,105.4) node [anchor=north west][inner sep=0.75pt]    {$\mathbb{R}^{n}$};
+        
+        
+        \end{tikzpicture}\]
+        可以对于$S^n$按照如下方式进行分割.令$1>\varepsilon >0$取
+        $$
+        U_+ := \{(x_0,\cdots,x_n)\in S^n : x_n > -\varepsilon\}
+        $$
+        如以下图所覆盖的区域
+        \[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+            %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+            
+            %Shape: Rectangle [id:dp07611984670232363] 
+            \draw  [draw opacity=0][fill={rgb, 255:red, 245; green, 166; blue, 35 }  ,fill opacity=1 ] (158,134.13) -- (286.87,134.13) -- (286.87,143.93) -- (158,143.93) -- cycle ;
+            %Curve Lines [id:da6447510678772372] 
+            \draw  [dash pattern={on 4.5pt off 4.5pt}]  (158,135.93) .. controls (160.87,222.51) and (286.87,220.51) .. (287.87,135.93) ;
+            %Straight Lines [id:da7068345970204506] 
+            \draw    (73.87,166) -- (156.83,102.51) ;
+            %Straight Lines [id:da25583885020092656] 
+            \draw    (73.87,166) -- (290.58,166) ;
+            %Straight Lines [id:da42073372384192465] 
+            \draw    (290.58,166) -- (373.53,102.51) ;
+            %Curve Lines [id:da5039460348738054] 
+            \draw [fill={rgb, 255:red, 245; green, 166; blue, 35 }  ,fill opacity=1 ]   (158,135.93) .. controls (160.87,52.51) and (286.87,48.51) .. (287.87,135.93) ;
+            %Curve Lines [id:da7188900081323275] 
+            \draw  [dash pattern={on 4.5pt off 4.5pt}]  (158,135.93) .. controls (169.87,110.51) and (281.87,110.51) .. (287.87,135.93) ;
+            %Shape: Free Drawing [id:dp524860491895933] 
+            \draw  [line width=3] [line join = round][line cap = round] (220.87,134.51) .. controls (220.87,134.51) and (220.87,134.51) .. (220.87,134.51) ;
+            %Straight Lines [id:da7782537742814564] 
+            \draw    (220.87,134.51) -- (220.87,26.51) ;
+            \draw [shift={(220.87,24.51)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+            %Straight Lines [id:da016481957721015128] 
+            \draw    (156.83,102.51) -- (168.87,102.51) ;
+            %Straight Lines [id:da5864281284021768] 
+            \draw    (373.53,102.51) -- (278.87,102.51) ;
+            %Straight Lines [id:da3915884859719545] 
+            \draw  [dash pattern={on 4.5pt off 4.5pt}]  (168.87,102.51) -- (278.87,102.51) ;
+            %Straight Lines [id:da21809769696250614] 
+            \draw    (158,135.93) -- (158,143.93) ;
+            %Straight Lines [id:da9679337621853661] 
+            \draw    (287.87,135.93) -- (286.87,141.51) ;
+            %Curve Lines [id:da38802596858351346] 
+            \draw [fill={rgb, 255:red, 245; green, 166; blue, 35 }  ,fill opacity=1 ] [dash pattern={on 0.84pt off 2.51pt}]  (158,143.93) .. controls (167.87,169.51) and (274.87,169.08) .. (286.87,141.51) ;
+            %Curve Lines [id:da4163357490575319] 
+            \draw    (158,135.93) .. controls (167.87,161.51) and (275.87,163.51) .. (287.87,135.93) ;
+            
+            % Text Node
+            \draw (231,6.4) node [anchor=north west][inner sep=0.75pt]    {$x_{n}$};
+            % Text Node
+            \draw (320,105.4) node [anchor=north west][inner sep=0.75pt]    {$\mathbb{R}^{n-1}$};
+            
+            
+            \end{tikzpicture}\]
+            对偶地,可以定义
+            $$
+            U_- := \{(x_0,\cdots,x_n)\in S^n : x_n <\varepsilon\}
+            $$
+            得到$U_+\cap U_-$如下图所示
+            \[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+                %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+                
+                %Curve Lines [id:da3786825796276587] 
+                \draw    (178,163.93) .. controls (178.11,189.87) and (303.11,186.87) .. (306.87,161.51) ;
+                %Curve Lines [id:da31179845890049007] 
+                \draw  [dash pattern={on 4.5pt off 4.5pt}]  (178,163.93) .. controls (178.11,133.87) and (306.11,134.87) .. (306.87,161.51) ;
+                %Curve Lines [id:da8024454899289954] 
+                \draw    (178,131.87) .. controls (178.11,157.8) and (303.11,154.8) .. (306.87,129.44) ;
+                %Curve Lines [id:da23983571117994384] 
+                \draw    (178,163.93) .. controls (174.11,155.87) and (175.11,142.87) .. (178,131.87) ;
+                %Curve Lines [id:da9672163448550493] 
+                \draw    (178,131.87) .. controls (178.11,101.8) and (306.11,102.8) .. (306.87,129.44) ;
+                %Curve Lines [id:da8844892358722445] 
+                \draw    (306.87,129.44) .. controls (309.11,138.87) and (310.11,149.87) .. (306.87,161.51) ;
+                
+                
+                
+                
+                \end{tikzpicture}\]
+                对于$U_+$和$U_-$由于它们都同胚于一个圆盘,因此它们都可以被视为一个星型集.即$H_k(U_+) = H_k(U_-) = 0(k \geq 0),H_0(U_+) = H_0(U_-) = \Z$.\\
+                而$U_+ \cap U_- \simeq S^{n-1}$因此$H_k(U_+\cap U_-)\cong H_k(S^{n-1})$.可以得到对于$k \geq 1$有以下的正合列
+                \[\begin{tikzcd}
+                    0 & {H_k(S^n)} & {H_{k-1}(S^{n-1})} & {H_{k-1}(U_+)\oplus H_{k-1}(U_-)} & {H_{k-1}(S^n)} & \cdots \\
+                    && {H_{k-1}(S^{n-2})} \\
+                    && \vdots \\
+                    0 & {H_1(S^{n-k+1})} & {H_0(S^{n-k})} & {H_0(U_+')\oplus H_0(U_-')} & {H_0(S^{n+k-1})} & 0 \\
+                    && {(n-k>0)\Z} & {\Z \oplus \Z} & \Z \\
+                    && c & {(c,-c)} \\
+                    &&& {(a,b)} & {a+b}
+                    \arrow[from=1-1, to=1-2]
+                    \arrow["{\partial_*}", from=1-2, to=1-3]
+                    \arrow[from=1-3, to=1-4]
+                    \arrow[from=1-4, to=1-5]
+                    \arrow[from=1-5, to=1-6]
+                    \arrow["{\cong }"', from=1-3, to=2-3]
+                    \arrow["\cong"', from=2-3, to=3-3]
+                    \arrow["\cong"', from=3-3, to=4-2]
+                    \arrow[from=4-1, to=4-2]
+                    \arrow[from=4-2, to=4-3]
+                    \arrow[from=4-3, to=4-4]
+                    \arrow[from=4-4, to=4-5]
+                    \arrow[from=4-5, to=4-6]
+                    \arrow[maps to, from=6-3, to=6-4]
+                    \arrow[maps to, from=7-4, to=7-5]
+                    \arrow["{=}"{marking}, draw=none, from=4-3, to=5-3]
+                    \arrow["{=}"{marking}, draw=none, from=4-4, to=5-4]
+                    \arrow["{=}"{marking}, draw=none, from=4-5, to=5-5]
+                \end{tikzcd}\]
+                在最上行的正合列中,如果$k-1 \geq 1$则$H_{k-1}(U_+)\oplus H_{k-1}(U_-) = 0$,因此$\partial_*$为同构.而这一步骤可以持续进行,因此得到中间的那条下降链.最终得到$H_1(S^{n-k+1})$.\\
+                问题转化为求$H_1(S^{n-k+1})$,将其按照我们先前的步骤得到$H_0(U'_+) = H_0(U'_-) = \Z$.记$p : H_0(S^{n-k}) \to H_0(U'_+)\oplus H_0(U'_-)$,$q : H_0(U'_+)\oplus H_0(U'_-) \to H_0(S^{n+k-1})$.得知$\ker q = \Image p$.\\
+                $\ker q = \{(c,-c):c \in \Z\}$因此得到$H_0(S^{n-k}) = \Z$($n-k > 0$)而$\ker p = 0$因此得到$H_1(S^{n-k+1}) = 0$.因此得到$H_k(S^n) = 0(n-k\geq 1)$当$n-k = 0$时,由于$H_0(S^0) =\Z \oplus \Z$,得知此时$\ker p = \Z$.换句话说
+                $$
+                H_k(S^n) \cong \left\{\begin{array}{c}\Z,n = k ,\\0 ,n \neq k \neq 0,\\\Z , k = 0\end{array}\right.
+                $$
+\end{example}
+得悉了球面$S^n$的同调群$H_k(S^n)$后,我们便可以证明Brouwer不动点定理.
+\begin{theorem}
+    (Brouwer fixed point theorem)对于任意映射$f : D^n \to D^n$一定有不动点,即至少存在一点$x \in D^n$,使得$f(x) = x$.
+\end{theorem}
+\begin{proof}
+    如果不存在$x$使得$f(x) = x$,即对于任意的$x \in D^n$都有$f(x) \neq x$.则由于$S^{n-1}$是一个$D^n$的收缩.
+    \[\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+        %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+        
+        %Shape: Circle [id:dp00737835207047155] 
+        \draw   (94,121.06) .. controls (94,72.98) and (132.98,34) .. (181.06,34) .. controls (229.14,34) and (268.11,72.98) .. (268.11,121.06) .. controls (268.11,169.14) and (229.14,208.11) .. (181.06,208.11) .. controls (132.98,208.11) and (94,169.14) .. (94,121.06) -- cycle ;
+        %Shape: Free Drawing [id:dp6667831609149588] 
+        \draw  [line width=3] [line join = round][line cap = round] (168.11,121.09) .. controls (168.11,121.09) and (168.11,121.09) .. (168.11,121.09) ;
+        %Straight Lines [id:da2155790162742821] 
+        \draw    (182.24,168.05) -- (138.82,24.97) ;
+        \draw [shift={(138.24,23.05)}, rotate = 73.12] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        %Shape: Free Drawing [id:dp2943674068507174] 
+        \draw  [line width=3] [line join = round][line cap = round] (144.11,42.09) .. controls (144.11,42.09) and (144.11,42.09) .. (144.11,42.09) ;
+        %Shape: Free Drawing [id:dp2664423048918656] 
+        \draw  [line width=3] [line join = round][line cap = round] (182.11,168.09) .. controls (182.11,168.09) and (182.11,168.09) .. (182.11,168.09) ;
+        
+        % Text Node
+        \draw (196,70.4) node [anchor=north west][inner sep=0.75pt]    {$D^{n}$};
+        % Text Node
+        \draw (257,133.4) node [anchor=north west][inner sep=0.75pt]    {$S^{n-1}$};
+        % Text Node
+        \draw (149,95.4) node [anchor=north west][inner sep=0.75pt]    {$x$};
+        % Text Node
+        \draw (149,161.4) node [anchor=north west][inner sep=0.75pt]    {$f( x)$};
+        % Text Node
+        \draw (120,56.4) node [anchor=north west][inner sep=0.75pt]    {$r( x)$};
+        
+        
+        \end{tikzpicture}\]
+        考虑上图,从$f(x) \in D^n$出发向$x$作一条射线使得射线与$S^{n-1}$交于$r(x)$,这就构成了一个收缩映射$r:D^n \to S^{n-1}$.考虑$i : S^{n-1}\to D^n$有$r \circ i = 1_{S^{n-1}}$.因此$r_* \circ i_* = 1_{H.(S^n)}$换句话说$i_*: H.(S^{n-1}) \to H.(D^n)$为一个单射.但是由于$\Z \cong H_n(S^n) \hookrightarrow H_n(B^{n+1}) = 0$是不现实的.因此得知必然存在一个不动点$x$.
+            
+        \end{proof}
+        \begin{example}
+            令$I := [0,1],I^0 := \{\text{pt}\}$,$I^m\xrightarrow[\text{homomorphism}]{\phi}\phi(I^m)\subset S^n$($n \geq m \geq 0$)有$H_k(S^n - \phi(I^m)) = \left\{\begin{array}{c}\Z , k = 0 \\0 , k \neq 0 \\\end{array}\right.$这是缘于$S^n - \phi(I^m)$是一个星型集(由于$\phi$是一个同态).下面进行详细的证明
+            \begin{proof}
+                暂略
+            \end{proof}
+        \end{example}
 \newpage
 \bibliographystyle{elsart-num}
 \bibliography{Reference}
